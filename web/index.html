@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ISSR</title>
+
+    <script
+            src="http://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
+            crossorigin="anonymous"></script>
+
+    <style type="text/css">
+
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        ul, ol {
+            list-style: none;
+        }
+
+        body {
+            background: #ccc;
+        }
+
+        .course {
+
+            border: 1px black solid;
+            box-shadow: 3px 5px 15px black;
+            position: absolute;
+            width: 200px;
+            height: 400px;
+            border-radius: 5px;
+            padding: 10px;
+
+        }
+
+        .course > span {
+            background: white;
+        }
+
+        .course > ul {
+            margin-top: 50px;
+        }
+
+        #c1 {
+            margin-top: 0;
+            margin-left: 0;
+            z-index: 1;
+            background: antiquewhite;
+        }
+
+        #c2 {
+            margin-top: 100px;
+            margin-left: 150px;
+            z-index: 2;
+            background: darkgray;
+        }
+
+        #c3 {
+            margin-top: 25px;
+            margin-left: 300px;
+            z-index: 1;
+            background: mediumvioletred;
+        }
+
+        #mainTable {
+            width: 100vw;
+            height: 70vh;
+        }
+
+        #content{
+            padding: 25px;
+        }
+    </style>
+    <script type="application/javascript">
+
+        $(document).ready(function () {
+            $('.course').click(function (ev) {
+                $('.course').css('zIndex', '1');
+                $(this).css('zIndex', '2');
+                $('#content').text($(this).find('.description').val())
+            });
+        });
+
+
+    </script>
+
+</head>
+<body>
+
+<h1>Welcome to ISSR</h1>
+
+<table id="mainTable">
+    <tr>
+        <td width="50%">
+            <h1 id="content">
+                Click on the course card to show the description  >>>>>
+            </h1>
+        </td>
+        <td width="50%">
+            <div id="courses">
+
+                <div id="c1" class="course">
+
+                    <img src="https://diylogodesigns.com/wp-content/uploads/2017/07/java-logo-vector-768x768.png"
+                         height="50px">
+                    <span>Java</span>
+
+                    <ul>
+                        <li>Number of students: 50</li>
+                        <li>Schedule: Every Fri 9:11</li>
+                    </ul>
+
+                    <input class="description" type="hidden" value="Java is a general-purpose computer-programming language that is concurrent, class-based, object-oriented, and specifically designed to have as few implementation dependencies as possible. It is intended to let application developers (write once, run anywhere (WORA)), meaning that compiled Java code can run on all platforms that support Java without the need for recompilation. Java applications are typically compiled to bytecode that can run on any Java virtual machine (JVM) regardless of the underlying computer architecture.">
+
+                </div>
+                <div id="c2" class="course">
+
+                    <img src="http://assets.stickpng.com/thumbs/584817d6cef1014c0b5e4999.png"
+                         height="50">
+                    <span>Oracle</span>
+
+                    <ul>
+                        <li>Number of students: 50</li>
+                        <li>Schedule: Every Fri 9:11</li>
+                    </ul>
+
+                    <input class="description" type="hidden" value="Oracle Database (commonly referred to as Oracle RDBMS or simply as Oracle) is a multi-model database[4] management system produced and marketed by Oracle Corporation. It is a database commonly used for running online transaction processing (OLTP), data warehousing (DW) and mixed (OLTP & DW) database workloads. The latest generation, Oracle Database 18c, is available on-prem, on-Cloud, or in a hybrid-Cloud environment. 18c may also be deployed on Oracle Engineered Systems (e.g. Exadata) on-prem, on Oracle (public) Cloud or (private) Cloud at Customer. At Openworld 2017 in San Francisco, Executive Chairman of the Board and CTO, Larry Ellison announced the next database generation, Oracle Autonomous Database.">
+
+                </div>
+                <div id="c3" class="course">
+                    <span>Software principles</span>
+
+                    <ul>
+                        <li>Number of students: 50</li>
+                        <li>Schedule: Every Fri 9:11</li>
+                    </ul>
+
+                    <input class="description" type="hidden" value="Software design is the process by which an agent creates a specification of a software artifact, intended to accomplish goals, using a set of primitive components and subject to constraints. Software design may refer to either all the activity involved in conceptualizing, framing, implementing, commissioning, and ultimately modifying complex systems or the activity following requirements specification and before programming, as ... [in] a stylized software engineering process.">
+
+                </div>
+
+            </div>
+        </td>
+    </tr>
+</table>
+
+
+</body>
+</html>
