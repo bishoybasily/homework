@@ -38,6 +38,5 @@ public class Circle2DTest {
         Assert.assertFalse(circle2D.contains(1, 1));
         Assert.assertTrue(circle2D.contains(.5, .5));
 
-
     }
 }
