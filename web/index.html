@@ -26,8 +26,7 @@
 
         .course {
 
-            border: 1px black solid;
-            box-shadow: 3px 5px 15px black;
+
             position: absolute;
             width: 200px;
             height: 400px;
@@ -73,17 +72,26 @@
         #content{
             padding: 25px;
         }
+
+        #courses > h3 {
+            margin: 10px 0;
+        }
     </style>
     <script type="application/javascript">
 
         $(document).ready(function () {
             $('.course').click(function (ev) {
                 $('.course').css('zIndex', '1');
+                $('.course').css('border', 'none');
+                $('.course').css('box-shadow', 'none');
+
                 $(this).css('zIndex', '2');
+                $(this).css('border', '1px black solid');
+                $(this).css('box-shadow', '3px 5px 15px black');
+
                 $('#content').text($(this).find('.description').val())
             });
         });
-
 
     </script>
 
@@ -101,6 +109,8 @@
         </td>
         <td valign="top" width="50%">
             <div id="courses">
+
+                <h3>Some of the courses that ISSR offers</h3>
 
                 <div id="c1" class="course">
 
