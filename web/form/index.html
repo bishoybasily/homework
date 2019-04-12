@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ISSR Forms</title>
+
+    <style>
+
+        * {
+            background-color: #E5E8E8;
+        }
+
+
+    </style>
+</head>
+
+<body>
+
+<h1>ISSR</h1>
+
+<form action="action.php" method="post">
+
+    <fieldset>
+        <label>
+            Username:
+            <input name="username" type="text"/>
+        </label>
+        <br>
+        <label>
+            Password:
+            <input name="password" type="password"/>
+        </label>
+        <br>
+
+        <h3>Preferred Time</h3>
+
+        <label>
+            PM
+            <input checked name="time" type="radio" value="PM"/>
+        </label>
+
+        <br>
+
+        <label>
+            AM
+            <input name="time" type="radio" value="AM"/>
+        </label>
+
+        <br>
+
+        <h3>Courses taken</h3>
+
+        <label>
+            <input checked name="courses[]" type="checkbox" value="web"/>
+            SE107-Web
+        </label>
+        <br>
+        <label>
+            <input checked name="courses[]" type="checkbox" value="java"/>
+            SE101-Java Programming
+        </label>
+        <br>
+        <label>
+            <input checked name="courses[]" type="checkbox" value="database"/>
+            SE103-Database
+        </label>
+        <br>
+        <br>
+
+        <h3>Where are you from?</h3>
+
+        <select name="city">
+            <option value="cairo">Cairo</option>
+            <option value="alex">Alexandria</option>
+            <option value="giza">Giza</option>
+        </select>
+        <br>
+        <br>
+
+        <h3>More about you</h3>
+
+        <br>
+        <label>
+            <textarea cols="50" name="about" rows="4">I love <3 java</textarea>
+        </label>
+        <br>
+        <br>
+
+        What are your preferred languages?
+
+        <br>
+
+        <select multiple name="lang[]">
+            <option value="java">Java</option>
+            <option value="puthon">Python</option>
+            <option value="php">PHP</option>
+        </select>
+
+        <br>
+        <br>
+
+        <input type="submit"/>
+        <input id="esc" type="button" value="Escape"/>
+    </fieldset>
+</form>
+</body>
+</html>
