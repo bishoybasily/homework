@@ -1,4 +1,4 @@
-package com.gmail.bishoybasily.issr;
+package com.gmail.bishoybasily.issr.assignment3;
 
 public class Square extends GeometricObject implements Colorable {
 

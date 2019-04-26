@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.gmail.bishoybasily.issr;
+package com.gmail.bishoybasily.issr.assignment3;
 
 import java.util.Date;
 
