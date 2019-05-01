@@ -67,7 +67,6 @@ public class ScreenHome implements Initializable, ScreenBase {
 
                     }
 
-
                 };
             }
         });
