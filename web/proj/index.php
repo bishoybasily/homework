@@ -1,68 +1,109 @@
-<?php
-
-require_once('connection.php');
-
-?>
+<?php require_once('connection.php'); ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <title>Directory</title>
     <meta charset="UTF-8">
-    <title>Users</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+    <style>
+
+        div.row.insert {
+            margin-top: 26px;
+            margin-bottom: 26px;
+        }
+
+    </style>
+
 </head>
 <body>
 
-<table>
-    <thead>
-    <tr>
-        <td>Name</td>
-        <td>Email</td>
-        <td>Telephone</td>
-        <td></td>
-    </tr>
-    </thead>
-    <tbody>
+<div class="jumbotron text-center">
+    <h1>ISSR DIRECTORY</h1>
+    <p>This is a basic directory app</p>
+</div>
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-sm-3">
+            <h3>Name</h3>
+        </div>
+        <div class="col-sm-4">
+            <h3>Email</h3>
+        </div>
+        <div class="col-sm-3">
+            <h3>Telephone</h3>
+        </div>
+        <div class="col-sm-2">
+
+        </div>
+    </div>
+
+    <div class="row insert">
+
+        <form method="post" action="create.php">
+
+            <div class="col-sm-3">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                    <input type="text" class="form-control" name="name" placeholder="Name">
+                </div>
+            </div>
+
+            <div class="col-sm-4">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                    <input type="email" class="form-control" name="email" placeholder="Email">
+                </div>
+            </div>
+
+            <div class="col-sm-3">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-headphones"></i></span>
+                    <input type="tel" class="form-control" name="telephone" placeholder="Telephone">
+                </div>
+            </div>
+
+            <div class="col-sm-2">
+                <input class='btn btn-success btn-block' type='submit' value='Insert'>
+            </div>
+
+        </form>
+
+    </div>
 
     <?php
 
     $stmt = $pdo->query("SELECT * FROM users");
     while ($row = $stmt->fetch()) {
         echo("
-                <tr>
-                    <td>" . $row->name . "</td>
-                    <td>" . $row->email . "</td>
-                    <td>" . $row->telephone . "</td>
-                    <td>
+                <div class='row'>
+                    <div class='col-sm-3'>
+                        <p>" . $row->name . "</p>
+                    </div>
+                    <div class='col-sm-4'>
+                        <p>" . $row->email . "</p>
+                    </div>
+                    <div class='col-sm-3'>
+                        <p>" . $row->telephone . "</p>
+                    </div>
+                    <div class='col-sm-2'>
                         <form method='post' action='delete.php'>
                             <input type='hidden' name='id' value='$row->id'>
-                            <input type='submit' value='Delete'>
+                            <input class='btn btn-danger btn-block' type='submit' value='Delete'>
                         </form>
-                    </td>
-                </tr>
+                    </div>
+                </div>
         ");
     }
 
     ?>
-
-    </tbody>
-</table>
-
-<div>
-
-    <form method="post" action="create.php">
-        <table>
-            <tr>
-                <td><input type="text" placeholder="name" name="name"></td>
-                <td><input type="email" placeholder="email" name="email"></td>
-                <td><input type="tel" placeholder="telephone" name="telephone"></td>
-            </tr>
-            <tr>
-                <td colspan="3">
-                    <input type="submit" value="Insert">
-                </td>
-            </tr>
-        </table>
-    </form>
 
 </div>
 
