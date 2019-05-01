@@ -30,15 +30,14 @@ public class Main extends Application {
 
         ComponentMain.Initializer.init().inject(this);
 
+        flyway.migrate();
+
         stage.setTitle("Directory");
         stage.setScene(scene);
         stage.show();
-
-        flyway.migrate();
+        stage.setOnCloseRequest(event -> hikariDataSource.close());
 
         screenManager.show(ScreenHome.class);
-
-        stage.setOnCloseRequest(event -> hikariDataSource.close());
 
     }
 
