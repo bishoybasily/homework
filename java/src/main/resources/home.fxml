@@ -1,26 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <VBox xmlns:fx="http://javafx.com/fxml/1" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity"
-      minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0"
+      minHeight="-Infinity"
+      minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" spacing="8.0"
       xmlns="http://javafx.com/javafx/8.0.172-ea" fx:controller="com.gmail.bishoybasily.issr.proj.screen.Home">
     <children>
-        <TableView prefHeight="200.0" prefWidth="200.0">
+        <TableView fx:id="tableUsers" prefHeight="200.0" prefWidth="200.0">
             <columns>
-                <TableColumn prefWidth="75.0" text="C1"/>
-                <TableColumn prefWidth="75.0" text="C2"/>
+                <TableColumn fx:id="columnName" prefWidth="75.0" text="Name"/>
+                <TableColumn fx:id="columnEmail" prefWidth="75.0" text="Email"/>
+                <TableColumn fx:id="columnTelephone" prefWidth="75.0" text="Telephone"/>
             </columns>
         </TableView>
-        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="8.0">
             <children>
-                <TextField/>
-                <TextField/>
-                <TextField/>
+                <TextField fx:id="textName" promptText="Name"/>
+                <TextField fx:id="textEmail" promptText="Email"/>
+                <TextField fx:id="textTelephone" promptText="Telephone"/>
             </children>
         </HBox>
-        <Button mnemonicParsing="false" text="Button"/>
+        <Button fx:id="buttonSave" mnemonicParsing="false" text="Save"/>
     </children>
 </VBox>
