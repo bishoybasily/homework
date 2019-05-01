@@ -13,6 +13,7 @@ import javax.inject.Inject;
 public class Main extends Application {
 
     public final static ScreenManager SCREEN_MANAGER = new ScreenManager();
+
     @Inject
     protected HikariDataSource hikariDataSource;
     @Inject
