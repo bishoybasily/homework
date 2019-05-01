@@ -34,7 +34,6 @@ public class RepositoryUsers {
         return user;
     }
 
-
     public List<User> getAll() throws SQLException {
 
         List<User> users = new ArrayList<>();
