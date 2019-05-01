@@ -14,4 +14,19 @@ public class User {
     private SimpleStringProperty email;
     private SimpleStringProperty telephone;
 
+    public static User from(Long id, String name, String email, String telephone) {
+        return new User()
+                .setId(new SimpleLongProperty(id))
+                .setName(new SimpleStringProperty(name))
+                .setEmail(new SimpleStringProperty(email))
+                .setTelephone(new SimpleStringProperty(telephone));
+    }
+
+    public static User from(String name, String email, String telephone) {
+        return new User()
+                .setName(new SimpleStringProperty(name))
+                .setEmail(new SimpleStringProperty(email))
+                .setTelephone(new SimpleStringProperty(telephone));
+    }
+
 }

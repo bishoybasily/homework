@@ -32,4 +32,17 @@ public class ServiceUsers {
         }
     }
 
+    public User save(User user) throws IllegalArgumentException {
+
+        if (user.getName().isEmpty().getValue() || user.getEmail().isEmpty().getValue() || user.getTelephone().isEmpty().getValue())
+            throw new IllegalArgumentException("All fields are required");
+
+        try {
+            return repositoryUsers.save(user);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
 }

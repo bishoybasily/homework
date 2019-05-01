@@ -37,10 +37,14 @@ public class ScreenHome implements Initializable, ScreenBase {
 
         ComponentMain.Initializer.get().inject(this);
 
+        columnName.setCellValueFactory(param -> param.getValue().getName());
+        columnEmail.setCellValueFactory(param -> param.getValue().getEmail());
+        columnTelephone.setCellValueFactory(param -> param.getValue().getTelephone());
         tableUsers.setItems(FXCollections.observableArrayList(serviceUsers.getAll()));
 
-
         buttonSave.setOnAction(event -> {
+
+            tableUsers.getItems().add(serviceUsers.save(User.from(textName.getText(), textEmail.getText(), textTelephone.getText())));
 
         });
 

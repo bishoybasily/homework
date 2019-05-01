@@ -27,7 +27,7 @@ public class Main extends Application {
 
         ComponentMain.Initializer.init().inject(this);
 
-        String title = "Hello World";
+        String title = "Users";
         int width = 800;
         int height = 600;
 

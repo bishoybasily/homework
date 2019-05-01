@@ -4,15 +4,14 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <VBox xmlns:fx="http://javafx.com/fxml/1" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity"
-      minHeight="-Infinity"
-      minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" spacing="8.0"
+      minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" spacing="8.0"
       xmlns="http://javafx.com/javafx/8.0.172-ea" fx:controller="com.gmail.bishoybasily.issr.proj.screen.ScreenHome">
     <children>
         <TableView fx:id="tableUsers" prefHeight="200.0" prefWidth="200.0">
             <columns>
-                <TableColumn fx:id="columnName" prefWidth="75.0" text="Name"/>
-                <TableColumn fx:id="columnEmail" prefWidth="75.0" text="Email"/>
-                <TableColumn fx:id="columnTelephone" prefWidth="75.0" text="Telephone"/>
+                <TableColumn fx:id="columnName" prefWidth="119.0" text="Name"/>
+                <TableColumn fx:id="columnEmail" prefWidth="241.0" text="Email"/>
+                <TableColumn fx:id="columnTelephone" prefWidth="176.0" text="Telephone"/>
             </columns>
         </TableView>
         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="8.0">

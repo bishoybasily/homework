@@ -3,13 +3,9 @@ package com.gmail.bishoybasily.issr.proj.model.repository;
 import com.gmail.bishoybasily.issr.proj.model.entity.User;
 import com.zaxxer.hikari.HikariDataSource;
 import javafx.beans.property.SimpleLongProperty;
-import javafx.beans.property.SimpleStringProperty;
 
 import javax.inject.Inject;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,10 +25,12 @@ public class RepositoryUsers {
         Connection connection = hikariDataSource.getConnection();
         PreparedStatement statement = connection.prepareStatement("SELECT id, name, email, telephone FROM users WHERE users.id=?");
         statement.setLong(1, id);
-        ResultSet resultSet = statement.executeQuery();
+        ResultSet set = statement.executeQuery();
 
-        while (resultSet.next())
-            user = getUser(resultSet);
+        if (set.next())
+            user = User.from(set.getLong("id"), set.getString("name"), set.getString("email"), set.getString("telephone"));
+
+        statement.close();
 
         return user;
     }
@@ -44,21 +42,32 @@ public class RepositoryUsers {
 
         Connection connection = hikariDataSource.getConnection();
         PreparedStatement statement = connection.prepareStatement("SELECT id, name, email, telephone FROM users");
-        ResultSet resultSet = statement.executeQuery();
+        ResultSet set = statement.executeQuery();
 
-        while (resultSet.next())
-            users.add(getUser(resultSet));
+        while (set.next())
+            users.add(User.from(set.getLong("id"), set.getString("name"), set.getString("email"), set.getString("telephone")));
+
+        statement.close();
 
         return users;
-
     }
 
-    private User getUser(ResultSet resultSet) throws SQLException {
-        return new User()
-                .setId(new SimpleLongProperty(resultSet.getLong("id")))
-                .setName(new SimpleStringProperty(resultSet.getString("name")))
-                .setEmail(new SimpleStringProperty(resultSet.getString("email")))
-                .setTelephone(new SimpleStringProperty(resultSet.getString("telephone")));
+    public User save(User user) throws SQLException {
+
+        Connection connection = hikariDataSource.getConnection();
+        PreparedStatement statement = connection.prepareStatement("INSERT INTO users(name, email, telephone) VALUES (?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
+        statement.setString(1, user.getName().getValue());
+        statement.setString(2, user.getEmail().getValue());
+        statement.setString(3, user.getTelephone().getValue());
+        Integer affectedRows = statement.executeUpdate();
+
+        ResultSet set = statement.getGeneratedKeys();
+        Long id = null;
+
+        if (set.next())
+            id = set.getLong(1);
+
+        return user.setId(new SimpleLongProperty(id));
     }
 
 }
