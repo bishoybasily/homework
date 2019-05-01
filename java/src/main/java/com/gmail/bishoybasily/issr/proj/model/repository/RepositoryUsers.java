@@ -38,7 +38,7 @@ public class RepositoryUsers {
     }
 
 
-    public List<User> getAll() throws Exception {
+    public List<User> getAll() throws SQLException {
 
         List<User> users = new ArrayList<>();
 
