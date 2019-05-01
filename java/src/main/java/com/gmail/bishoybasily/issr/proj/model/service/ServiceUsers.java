@@ -34,7 +34,7 @@ public class ServiceUsers {
 
     public User save(User user) throws IllegalArgumentException {
 
-        if (user.getName().isEmpty().getValue() || user.getEmail().isEmpty().getValue() || user.getTelephone().isEmpty().getValue())
+        if (user.getName() != null && user.getEmail() != null && user.getTelephone() != null)
             throw new IllegalArgumentException("All fields are required");
 
         try {
@@ -45,4 +45,11 @@ public class ServiceUsers {
 
     }
 
+    public void delete(long id) {
+        try {
+            repositoryUsers.delete(id);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
