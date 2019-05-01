@@ -12,12 +12,14 @@ import javax.inject.Inject;
 
 public class Main extends Application {
 
-    public final static ScreenManager SCREEN_MANAGER = new ScreenManager();
-
     @Inject
     protected HikariDataSource hikariDataSource;
     @Inject
     protected Flyway flyway;
+    @Inject
+    protected ScreenManager screenManager;
+    @Inject
+    protected Scene scene;
 
     public static void main(String[] args) {
         launch(args);
@@ -28,20 +30,15 @@ public class Main extends Application {
 
         ComponentMain.Initializer.init().inject(this);
 
-        String title = "Directory";
-        int width = 800;
-        int height = 600;
-
-        stage.setTitle(title);
-        Scene scene = new Scene(SCREEN_MANAGER, width, height);
+        stage.setTitle("Directory");
         stage.setScene(scene);
         stage.show();
 
-        SCREEN_MANAGER.show(ScreenHome.class);
+        flyway.migrate();
+
+        screenManager.show(ScreenHome.class);
 
         stage.setOnCloseRequest(event -> hikariDataSource.close());
-
-        flyway.migrate();
 
     }
 

@@ -68,6 +68,8 @@ public class RepositoryUsers {
         if (set.next())
             id = set.getLong(1);
 
+        statement.close();
+
         return user.setId(id);
     }
 
@@ -78,6 +80,7 @@ public class RepositoryUsers {
         PreparedStatement statement = connection.prepareStatement(sql);
         statement.setLong(1, id);
         statement.executeUpdate();
+        statement.close();
 
     }
 

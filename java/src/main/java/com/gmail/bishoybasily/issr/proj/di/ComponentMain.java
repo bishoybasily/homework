@@ -4,8 +4,12 @@ import com.gmail.bishoybasily.issr.proj.Main;
 import com.gmail.bishoybasily.issr.proj.screen.ScreenHome;
 import dagger.Component;
 
+import javax.inject.Singleton;
+
+@Singleton
 @Component(modules = {
-        ModuleDatabase.class
+        ModuleDatabase.class,
+        ModuleFX.class
 })
 public interface ComponentMain {
 
