@@ -60,7 +60,7 @@ public class ScreenHome implements Initializable, ScreenBase {
                             Button buttonDelete = new Button("Delete");
                             buttonDelete.setOnAction(event -> {
                                 serviceUsers.delete(item.longValue());
-                                tableUsers.getItems().remove(item);
+                                refreshTable();
                             });
                             setGraphic(buttonDelete);
                         }
@@ -72,14 +72,18 @@ public class ScreenHome implements Initializable, ScreenBase {
             }
         });
 
-        tableUsers.setItems(FXCollections.observableArrayList(serviceUsers.getAll()));
 
         buttonSave.setOnAction(event -> {
-
-            tableUsers.getItems().add(serviceUsers.save(User.from(textName.getText(), textEmail.getText(), textTelephone.getText())));
-
+            serviceUsers.save(User.from(textName.getText(), textEmail.getText(), textTelephone.getText()));
+            refreshTable();
         });
 
+        refreshTable();
+
+    }
+
+    private void refreshTable() {
+        tableUsers.setItems(FXCollections.observableArrayList(serviceUsers.getAll()));
     }
 
 }

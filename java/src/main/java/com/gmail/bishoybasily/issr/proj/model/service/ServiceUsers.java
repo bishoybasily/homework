@@ -34,7 +34,7 @@ public class ServiceUsers {
 
     public User save(User user) throws IllegalArgumentException {
 
-        if (user.getName() != null && user.getEmail() != null && user.getTelephone() != null)
+        if (user.getName() == null || user.getEmail() == null || user.getTelephone() == null)
             throw new IllegalArgumentException("All fields are required");
 
         try {
@@ -52,4 +52,5 @@ public class ServiceUsers {
             throw new RuntimeException(e);
         }
     }
+
 }
