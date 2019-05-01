@@ -12,19 +12,15 @@ public class User {
     private String email;
     private String telephone;
 
-    public static User from(Long id, String name, String email, String telephone) {
-        return new User()
-                .setId(id)
-                .setName(name)
-                .setEmail(email)
-                .setTelephone(telephone);
+    public User(Long id, String name, String email, String telephone) {
+        this(name, email, telephone);
+        this.id = id;
     }
 
-    public static User from(String name, String email, String telephone) {
-        return new User()
-                .setName(name)
-                .setEmail(email)
-                .setTelephone(telephone);
+    public User(String name, String email, String telephone) {
+        this.name = name;
+        this.email = email;
+        this.telephone = telephone;
     }
 
 }

@@ -74,7 +74,7 @@ public class ScreenHome implements Initializable, ScreenBase {
 
 
         buttonSave.setOnAction(event -> {
-            serviceUsers.save(User.from(textName.getText(), textEmail.getText(), textTelephone.getText()));
+            serviceUsers.save(new User(textName.getText(), textEmail.getText(), textTelephone.getText()));
             refreshTable();
         });
 

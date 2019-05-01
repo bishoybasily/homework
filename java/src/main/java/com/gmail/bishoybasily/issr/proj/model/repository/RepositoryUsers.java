@@ -27,7 +27,7 @@ public class RepositoryUsers {
         ResultSet set = statement.executeQuery();
 
         if (set.next())
-            user = User.from(set.getLong("id"), set.getString("name"), set.getString("email"), set.getString("telephone"));
+            user = new User(set.getLong("id"), set.getString("name"), set.getString("email"), set.getString("telephone"));
 
         statement.close();
 
@@ -44,7 +44,7 @@ public class RepositoryUsers {
         ResultSet set = statement.executeQuery();
 
         while (set.next())
-            users.add(User.from(set.getLong("id"), set.getString("name"), set.getString("email"), set.getString("telephone")));
+            users.add(new User(set.getLong("id"), set.getString("name"), set.getString("email"), set.getString("telephone")));
 
         statement.close();
 
