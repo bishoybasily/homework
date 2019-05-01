@@ -22,7 +22,8 @@ public class RepositoryUsers {
         User user = null;
 
         Connection connection = hikariDataSource.getConnection();
-        PreparedStatement statement = connection.prepareStatement("SELECT id, name, email, telephone FROM users WHERE id=?");
+        String sql = "SELECT id, name, email, telephone FROM users WHERE id=?";
+        PreparedStatement statement = connection.prepareStatement(sql);
         statement.setLong(1, id);
         ResultSet set = statement.executeQuery();
 
@@ -39,7 +40,8 @@ public class RepositoryUsers {
         List<User> users = new ArrayList<>();
 
         Connection connection = hikariDataSource.getConnection();
-        PreparedStatement statement = connection.prepareStatement("SELECT id, name, email, telephone FROM users");
+        String sql = "SELECT id, name, email, telephone FROM users";
+        PreparedStatement statement = connection.prepareStatement(sql);
         ResultSet set = statement.executeQuery();
 
         while (set.next())
@@ -53,7 +55,8 @@ public class RepositoryUsers {
     public User save(User user) throws SQLException {
 
         Connection connection = hikariDataSource.getConnection();
-        PreparedStatement statement = connection.prepareStatement("INSERT INTO users(name, email, telephone) VALUES (?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
+        String sql = "INSERT INTO users(name, email, telephone) VALUES (?, ?, ?)";
+        PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
         statement.setString(1, user.getName());
         statement.setString(2, user.getEmail());
         statement.setString(3, user.getTelephone());
@@ -71,7 +74,8 @@ public class RepositoryUsers {
     public void delete(Long id) throws SQLException {
 
         Connection connection = hikariDataSource.getConnection();
-        PreparedStatement statement = connection.prepareStatement("DELETE FROM users WHERE id=?");
+        String sql = "DELETE FROM users WHERE id=?";
+        PreparedStatement statement = connection.prepareStatement(sql);
         statement.setLong(1, id);
         statement.executeUpdate();
 
