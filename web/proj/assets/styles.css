@@ -7,3 +7,11 @@ div.row.insert {
     margin-top: 26px;
     margin-bottom: 26px;
 }
+
+div.row.update-on {
+    display: none;
+}
+
+div.row.update-off {
+    display: block;
+}
