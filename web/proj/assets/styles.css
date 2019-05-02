@@ -1,0 +1,9 @@
+div.row {
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+div.row.insert {
+    margin-top: 26px;
+    margin-bottom: 26px;
+}

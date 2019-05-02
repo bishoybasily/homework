@@ -1,5 +1,3 @@
-<?php require_once('connection.php'); ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,14 +9,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
-    <style>
-
-        div.row.insert {
-            margin-top: 26px;
-            margin-bottom: 26px;
-        }
-
-    </style>
+    <link href="assets/styles.css" rel="stylesheet"/>
+    <script src="assets/scripts.js" type="application/javascript"></script>
 
 </head>
 <body>
@@ -47,7 +39,7 @@
 
     <div class="row insert">
 
-        <form method="post" action="create.php">
+        <form action="user/create.php" method="post">
 
             <div class="col-sm-3">
                 <div class="input-group">
@@ -77,33 +69,6 @@
         </form>
 
     </div>
-
-    <?php
-
-    $stmt = $pdo->query("SELECT * FROM users");
-    while ($row = $stmt->fetch()) {
-        echo("
-                <div class='row'>
-                    <div class='col-sm-3'>
-                        <p>" . $row->name . "</p>
-                    </div>
-                    <div class='col-sm-4'>
-                        <p>" . $row->email . "</p>
-                    </div>
-                    <div class='col-sm-3'>
-                        <p>" . $row->telephone . "</p>
-                    </div>
-                    <div class='col-sm-2'>
-                        <form method='post' action='delete.php'>
-                            <input type='hidden' name='id' value='$row->id'>
-                            <input class='btn btn-danger btn-block' type='submit' value='Delete'>
-                        </form>
-                    </div>
-                </div>
-        ");
-    }
-
-    ?>
 
 </div>
 
